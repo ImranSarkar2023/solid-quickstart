@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Protected Page</title>
+    <style>
+        /* Center the form and links */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Style the password form */
+        #password-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 50px;
+        }
+        
+        #password-input {
+            margin-bottom: 10px;
+        }
+        
+        #submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        /* Hide the links initially */
+        #links-container {
+            display: none;
+            margin-top: 50px;
+        }
+        
+        /* Style the links */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Style the error message */
+        #error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="password-form-container">
+        <form id="password-form" method="post">
+            <label for="password-input">Enter Password:</label>
+            <input type="password" id="password-input" name="password">
+            <button type="submit" id="submit-button">Submit</button>
+            <div id="error-message"></div>
+        </form>
+    </div>
+
+    <div id="links-container">
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Get the form, links container, and error message elements
+        const passwordForm = document.getElementById('password-form');
+        const linksContainer = document.getElementById('links-container');
+        const errorMessage = document.getElementById('error-message');
+
+        // Set error message display to none initially
+        errorMessage.style.display = 'none';
+
+        // Add event listener to form submit
+        passwordForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const passwordInput = document.getElementById('password-input');
+            if (passwordInput.value === '0156') {
+                // Password is correct, show links container
+                linksContainer.style.display = 'block';
+                passwordForm.style.display = 'none';
+            } else {
+                // Password is incorrect, show error message
+                errorMessage.innerHTML = 'Incorrect password, please try again.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
